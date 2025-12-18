@@ -33,16 +33,6 @@ public class Teacher {
         return status;
     }
 
-    @Override
-    public String toString() {
-        return "Teacher{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", status='" + status + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
     public void setStatus(String status) {
         this.status = status;
     }
@@ -93,7 +83,6 @@ public class Teacher {
         }
     }
 
-
     public byte getAge() {
         return age;
     }
@@ -104,5 +93,14 @@ public class Teacher {
         } else {
             this.age = age;
         }
+    }
+
+    public String toString() {
+        return "Teacher{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", status='" + status + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
