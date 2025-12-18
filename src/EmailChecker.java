@@ -1,7 +1,7 @@
 public class EmailChecker {
     public static boolean isValid(String email) {
         if (email == null || email.isEmpty()) {
-            System.out.println("Email can't be null");
+            System.out.println("Email can't be null or empty");
             return false;
         }
 

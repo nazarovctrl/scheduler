@@ -1,25 +1,26 @@
 public class TeacherStatusChecker {
-    public static boolean isValid(String position) {
-        if (position == null) {
-            System.out.println("Position can't be null");
+    public static boolean isValid(String status) {
+        if (status == null) {
+            System.out.println("Status can't be null");
             return false;
-        } else if (position.isEmpty()) {
-            System.out.println("Position can't be empty");
+        } else if (status.isEmpty()) {
+            System.out.println("Status can't be empty");
             return false;
         }
 
-        String lower = position.toLowerCase();
+        status = status.toLowerCase();
 
-        for (String valid : Teacher.STATUSES) {
-            if (lower.equals(valid)) {
+        for (String validStatus : Teacher.STATUSES) {
+            if (status.equals(validStatus)) {
                 return true;
             }
         }
 
-        System.out.println("Status is incorrect: '" + position + "' is not a valid university title");
+        System.out.println("Status is incorrect: '" + status + "' is not a valid university title");
+
         System.out.print("Valid statues: ");
-        for (String status : Teacher.STATUSES) {
-            System.out.print(status + ",");
+        for (String validStatus : Teacher.STATUSES) {
+            System.out.print(validStatus + ",");
         }
 
         System.out.println();

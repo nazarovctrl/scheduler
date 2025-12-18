@@ -9,7 +9,6 @@ public class University {
     public static Teacher[] teachers = new Teacher[200];
     public static Room[] rooms = new Room[700];
 
-
     public static void printCohortsDetailed() {
         for (int i = 0; i < cohorts.length; i++) {
             Cohort cohort = cohorts[i];
@@ -72,7 +71,7 @@ public class University {
         cohorts[index] = null;
     }
 
-    public static void addCourse(String name, byte credits, String code, byte sessionsPerWeek) {
+    public static Object addCourse(String name, byte credits, String code, byte sessionsPerWeek) {
         int i = 0;
 
         Course course = new Course();
@@ -87,6 +86,8 @@ public class University {
             i++;
         }
         courses[i] = course;
+
+        return course;
     }
 
     public static void addTeacher(String name, byte age, String status, String email) {
