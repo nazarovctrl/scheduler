@@ -19,6 +19,9 @@ public class Scheduler {
             System.out.println("2. Courses");
             System.out.println("3. Teachers");
             System.out.println("4. Rooms");
+            System.out.println("5. Other Staff");
+            System.out.println("6. Cafeteria Management");
+
 
             System.out.print("Enter number(O.Exit): ");
             input = inputReader.readInt();
@@ -38,11 +41,97 @@ public class Scheduler {
                 case 4:
                     manageRooms();
                     break;
+                case 5:
+                    manageStaff();
+                    break;
+                case 6:
+                    manageCafeteria();
+                    break;
                 default:
                     System.out.println("Wrong Number!");
             }
 
         } while (input != 0);
+    }
+
+    private static void manageCafeteria() {
+        int input;
+        do {
+            System.out.println("**** Cafeteria Management Menu ****");
+            System.out.println("Does cafeteria work right now:" + Cafeteria.isActive());
+
+            System.out.println("1. Change Status to " + !Cafeteria.isActive());
+            System.out.print("Enter number (O.Back): ");
+            input = inputReader.readInt();
+
+            switch (input) {
+                case 1:
+                    Cafeteria.setActive(!Cafeteria.isActive());
+                    break;
+                default:
+                    System.out.println("Wrong Number");
+            }
+        } while (input != 0);
+    }
+
+    private static void manageStaff() {
+        int input;
+        do {
+            System.out.println("**** Staff Management Menu ****");
+            System.out.println("1. Show Staff");
+            System.out.println("2. Add Staff Member");
+            System.out.println("3. Remove Staff Member");
+            System.out.print("Enter number (O.Back): ");
+            input = inputReader.readInt();
+
+            switch (input) {
+                case 1:
+                    University.printStaff();
+                    break;
+                case 2:
+                    addStaff();
+                    break;
+                case 3:
+                    removeStaff();
+                    break;
+                default:
+                    System.out.println("Wrong Number");
+            }
+        } while (input != 0);
+    }
+
+    private static void removeStaff() {
+        University.printStaff();
+
+        System.out.println("Enter the index:");
+        int index = inputReader.readInt();
+
+        University.removeStaff(index);
+    }
+
+    private static void addStaff() {
+        System.out.print("Enter Staff name: ");
+        String name = inputReader.readLine();
+
+        System.out.print("Enter Staff age: ");
+        byte age = inputReader.readByte();
+
+        System.out.print("Enter Staff email: ");
+        String email = inputReader.readLine();
+        email = checkAndGetValidEmail(email);
+
+        System.out.print("Enter Staff position: ");
+        String position = inputReader.readLine();
+
+        while (!StaffPositionChecker.isValid(position)) {
+            System.out.print("Enter Staff position: ");
+            position = inputReader.readLine();
+        }
+
+        System.out.print("Enter Staff salary: ");
+        int salary = inputReader.readInt();
+
+        University.addStaff(name, email, position, salary, age);
     }
 
     private static void manageCohorts() {
@@ -76,19 +165,7 @@ public class Scheduler {
     }
 
     private static void addCohort() {
-        System.out.print("Enter cohort id:");
-        int id = inputReader.readInt();
 
-        System.out.print("Enter cohort name: ");
-        String name = inputReader.readLine();
-
-        System.out.print("Enter cohort's major: ");
-        String major = inputReader.readLine();
-
-        System.out.print("Are they studying now? (true/false):");
-        boolean isStudying = inputReader.readBoolean();
-
-        University.addCohort(id, name, major, isStudying);
     }
 
     private static void removeCohort() {

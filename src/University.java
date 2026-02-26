@@ -8,6 +8,7 @@ public class University {
     public static Course[] courses = new Course[200];
     public static Teacher[] teachers = new Teacher[200];
     public static Room[] rooms = new Room[700];
+    public static OtherStaff[] staffs = new OtherStaff[500];
 
     public static void printCohortsDetailed() {
         for (int i = 0; i < cohorts.length; i++) {
@@ -151,5 +152,34 @@ public class University {
                 System.out.println(i + "." + room.toString());
             }
         }
+    }
+
+    public static void printStaff(){
+        System.out.println("Staff List:");
+        for (int i = 0; i < staffs.length; i++) {
+            OtherStaff staff = staffs[i];
+
+            if (staff != null) { //to avoid NullPointerException
+                System.out.println(i + "." + staff.toString());
+            }
+        }
+    }
+    public static void removeStaff(int index) {staffs[index] = null;}
+
+    public static void addStaff(String name, String email, String position, int salary, byte age){
+        OtherStaff staff = new OtherStaff();
+        staff.setName(name);
+        staff.setPosition(position);
+        staff.setEmail(email);
+        staff.setAge(age);
+        staff.setSalary(salary);
+
+        //finding empty index
+        int i = 0;
+        while (staffs[i] != null) {
+            i++;
+        }
+
+        staffs[i] = staff;
     }
 }
